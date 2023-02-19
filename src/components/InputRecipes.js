@@ -2,7 +2,7 @@
 import React,{Fragment, useState,useEffect} from "react";
 import CreatableSelect from 'react-select/creatable';
 import Multiselect from 'multiselect-react-dropdown';
-
+import faster_than_light from "./faster_than_light";
 const Inputrecipes = () => {
     const [name,setName] = useState("");
     var [listgrocery,setlistgrocery] = useState([])
@@ -19,7 +19,7 @@ const Inputrecipes = () => {
             grocery = constgro.map((obj) => ({"name": obj.value,"qty":1}))
             console.log(grocery)
             const body = {name,grocery}
-            const response = await fetch("http://localhost:5001/add_recipe",{
+            const response = await fetch(faster_than_light+"add_recipe",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -33,7 +33,7 @@ const Inputrecipes = () => {
     }
     const getgro = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_groceries")
+            const response = await fetch(faster_than_light+"get_groceries")
             const jsonData = await response.json();
             //setlistgrocery(jsonData)
             // listgrocery = jsonData

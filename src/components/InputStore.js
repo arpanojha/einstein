@@ -1,12 +1,13 @@
 //import e from "express";
 import React,{Fragment, useState} from "react";
+import faster_than_light from "./faster_than_light";
 const Inputstore = () => {
     const [name,setName] = useState("");
     const onsubmit = async(e) =>{
         e.preventDefault();
         try {
             const body = {name}
-            const response = await fetch("http://localhost:5001/add_store",{
+            const response = await fetch(faster_than_light+"add_store",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

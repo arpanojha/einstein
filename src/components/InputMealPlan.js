@@ -2,6 +2,7 @@
 import React,{Fragment, useState,useEffect} from "react";
 import Dropdown from "./Dropdown";
 import Multiselect from 'multiselect-react-dropdown';
+import faster_than_light from "./faster_than_light"
 const Inputmealplan = () => {
     const [name,setName] = useState("");
     const [listreci,setlistofreci] = useState([]);
@@ -16,7 +17,7 @@ const Inputmealplan = () => {
         try {
             recipes = recilist.map((obj) => ({"name": obj.name}))
             const body = {name,recipes}
-            const response = await fetch("http://localhost:5001/add_meal_plan",{
+            const response = await fetch(faster_than_light+"add_meal_plan",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -30,7 +31,7 @@ const Inputmealplan = () => {
     }
     const getReci = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_recipes")
+            const response = await fetch(faster_than_light+"get_recipes")
             const jsonData = await response.json();
             setlistofreci(jsonData);
             //console.log(jsonData);

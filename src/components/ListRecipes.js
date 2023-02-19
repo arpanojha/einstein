@@ -1,4 +1,5 @@
 import React,{Fragment, useState,useEffect} from "react";
+import faster_than_light from "./faster_than_light";
 const Listrecipes = () =>{
     const [listofreci,setlistofreci] = useState([]);
     var [gro_names,setgo_games] = useState({}); 
@@ -6,7 +7,7 @@ const Listrecipes = () =>{
     const delete_item =async (name) =>{
         try {
             const del = name.reciid
-            const deleteitem = await fetch(`http://localhost:5001/remove_recipe/${del}`,{
+            const deleteitem = await fetch(`${faster_than_light}remove_recipe/${del}`,{
                 method: "DELETE"
             })
             //console.log(deleteitem);
@@ -22,7 +23,7 @@ const Listrecipes = () =>{
             console.log(e.target)
             const qty=e.target.value
             const body = {qty}
-            const update = await fetch(`http://localhost:5001/update_one_recipe_qty/${id.reciid}`,{
+            const update = await fetch(`${faster_than_light}update_one_recipe_qty/${id.reciid}`,{
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -34,7 +35,7 @@ const Listrecipes = () =>{
     }
     async function gro_name (n) {
         try {
-            const res = await fetch(`http://localhost:5001/get_one_grocery_id/${n}`,{
+            const res = await fetch(`${faster_than_light}get_one_grocery_id/${n}`,{
                 method: "GET"
             })
             const v = await res.json()
@@ -49,7 +50,7 @@ const Listrecipes = () =>{
     const dummyvalue = async(n) => {return gro_name(n)}
     const getMP = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_recipes")
+            const response = await fetch(faster_than_light+"get_recipes")
             const jsonData = await response.json();
             setlistofreci(jsonData)
             //console.log(jsonData);
@@ -59,7 +60,7 @@ const Listrecipes = () =>{
     }
     const getGro = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_groceries")
+            const response = await fetch(faster_than_light+"get_groceries")
             const jsonData = await response.json();
             const l = jsonData.length;
             var i=0;

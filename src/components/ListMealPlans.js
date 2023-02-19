@@ -1,10 +1,11 @@
 import React,{Fragment, useState,useEffect} from "react";
+import faster_than_light from "./faster_than_light";
 const Listmealplan = () =>{
     const [listofmp,setlistofmp] = useState([]);
     
     const delete_item =async (name) =>{
         try {
-            const deleteitem = await fetch(`http://localhost:5001/remove_meal_plan/${name}`,{
+            const deleteitem = await fetch(`${faster_than_light}remove_meal_plan/${name}`,{
                 method: "DELETE"
             })
             console.log(deleteitem);
@@ -17,7 +18,7 @@ const Listmealplan = () =>{
     }
     const getMP = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_meal_plans")
+            const response = await fetch(faster_than_light+"get_meal_plans")
             const jsonData = await response.json();
             setlistofmp(jsonData)
             console.log(jsonData);

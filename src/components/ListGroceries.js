@@ -1,4 +1,5 @@
 import React,{Fragment, useState,useEffect} from "react";
+import faster_than_light from "./faster_than_light"
 const Listgroceries = () =>{
     const [listgro,setlistgro] = useState([]);
     
@@ -17,7 +18,7 @@ const Listgroceries = () =>{
     // }
     const getMP = async () => {
         try {
-            const response = await fetch("http://localhost:5001/get_groceries")
+            const response = await fetch(faster_than_light+"get_groceries")
             const jsonData = await response.json();
             setlistgro(jsonData)
             //console.log(jsonData);

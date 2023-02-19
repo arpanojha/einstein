@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.73c300a4.css",
+    "main.js": "/static/js/main.cd76f5f2.js",
+    "static/js/149.0c8b4424.js": "/static/js/149.0c8b4424.js",
+    "index.html": "/index.html",
+    "serve.json": "/serve.json",
+    "manifest.json": "/manifest.json",
+    "main.73c300a4.css.map": "/static/css/main.73c300a4.css.map",
+    "main.cd76f5f2.js.map": "/static/js/main.cd76f5f2.js.map",
+    "149.0c8b4424.js.map": "/static/js/149.0c8b4424.js.map"
+  },
+  "entrypoints": [
+    "static/js/149.0c8b4424.js",
+    "static/css/main.73c300a4.css",
+    "static/js/main.cd76f5f2.js"
+  ]
+}
