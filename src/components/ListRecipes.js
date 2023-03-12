@@ -33,6 +33,22 @@ const Listrecipes = () =>{
             
         }
     }
+
+    const update_qty =async (e,id) =>{
+        try {
+            console.log(e.target)
+            const unit=e.target.value
+            const body = {unit}
+            const update = await fetch(`${faster_than_light}update_one_recipe_unit/${id.reciid}`,{
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            })
+        } catch (error) {
+            console.error("Cannot update id")
+            
+        }
+    }
     async function gro_name (n) {
         try {
             const res = await fetch(`${faster_than_light}get_one_grocery_id/${n}`,{
@@ -88,6 +104,7 @@ const Listrecipes = () =>{
         <th>Name</th>
         <th>Grocery Name</th>
         <th>Grocery qty</th>
+        <th>Units</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -107,6 +124,13 @@ const Listrecipes = () =>{
                   defaultValue={x.qty}
                   onChange={(e) => update(e, x)}
                   placeholder="Type Qty"
+                /></td>
+            <td><input
+                  name="qty"
+                  type="text"
+                  defaultValue={x.unit}
+                  onChange={(e) => update_qty(e, x)}
+                  placeholder="Type Units"
                 /></td>
     
             <td><button className= "btn btn-danger" onClick={() => delete_item(x)}>Delete</button></td>
